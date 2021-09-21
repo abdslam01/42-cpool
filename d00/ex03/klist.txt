@@ -1,0 +1,5 @@
+Credentials cache: API:EE8BA0D8-C5EC-4C6F-9C95-1782AAF3300F
+        Principal: abahafid@1337.MA
+
+  Issued                Expires               Principal
+Sep 20 14:21:41 2021  Sep 21 00:21:41 2021  krbtgt/1337.MA@1337.MA
