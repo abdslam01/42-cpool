@@ -1,0 +1,4 @@
+42: offset of beggining of search
+string: type of search
+42: string to look for in 42th position
+42 file detected: message to print to stdout if the 42file type is detected
