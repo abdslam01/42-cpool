@@ -6,55 +6,49 @@
 /*   By: abahafid <abahafid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 11:44:59 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/23 14:05:37 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/23 16:05:33 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_write_output(char i, char j, char k, short is_last_time)
+void	ft_putchar(char c)
 {
-	char	l;
+	write(1, &c, 1);
+}
 
-	l = j + 1;
-	while (l <= '9')
+void	ft_write_output(int left, int right, short is_last_time)
+{
+	ft_putchar(left / 10 + '0');
+	ft_putchar(left % 10 + 48);
+	ft_putchar(' ');
+	ft_putchar(right / 10 + 48);
+	ft_putchar(right % 10 + 48);
+	if (!is_last_time)
 	{
-		write(1, &i, 1);
-		write(1, &j, 1);
-		write(1, " ", 1);
-		write(1, &k, 1);
-		write(1, &l, 1);
-		if (!is_last_time)
-			write (1, ", ", 2);
-		l++;
+		ft_putchar(',');
+		ft_putchar(' ');
 	}
 }
 
 void	ft_print_comb2(void)
 {
-	char	i;
-	char	j;
-	char	k;
-	char	l;
+	int		left;
+	int		right;
 	short	is_last_time;
 
 	is_last_time = 0;
-	i = '0';
-	while (i <= '5')
+	left = 0;
+	while (left < 99)
 	{
-		j = '0';
-		while (j <= '9')
+		right = left + 1;
+		while (right < 100)
 		{
-			k = '0';
-			while (k <= '9')
-			{
-				if (i == '9')
-					is_last_time = 1;
-				ft_write_output(i, j, k, is_last_time);
-				k++;
-			}
-			j++;
+			if (left == 98 && right == 99)
+				is_last_time = 1;
+			ft_write_output(left, right, is_last_time);
+			right++;
 		}
-		i++;
+		left++;
 	}
 }

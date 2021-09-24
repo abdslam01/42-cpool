@@ -6,7 +6,7 @@
 /*   By: abahafid <abahafid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 16:57:41 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/23 19:28:12 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/24 11:25:23 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,69 +17,69 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putchar(char c)
+void	ft_putarray(int *arr, int size)
 {
-	write(1, &c, 1);
-}
-
-// void	ft_putnbr(int nb)
-// {
-// 	if (nb < 0)
-// 	{
-// 		ft_putchar('-');
-// 		nb *= -1;
-// 	}
-// 	if (nb < 10)
-// 	{
-// 		ft_putchar(nb + '0');
-// 	}
-// 	else
-// 	{
-// 		ft_putnbr(nb / 10);
-// 		ft_putchar(nb % 10 + '0');
-// 	}
-// }
-
-// int	ft_number_digits(int nb)
-// {
-// 	int	count;
-
-// 	count = 0;
-// 	if(nb == 0)
-// 		return (1);
-// 	while (nb)
-// 	{
-// 		nb /= 10;
-// 		count++;
-// 	}
-// 	return (count);
-// }
-char*	next_comb(char *arr, int n)
-{
-	char *t_arr[n];
 	int	i;
 
 	i = 0;
-	while(i < n)
-		t_arr[i] = arr[i];
-	
-	i =  n - 1;
-	if(t_arr[i] == 9)
+	while (i < size)
 	{
-		
+		ft_putchar(arr[i] + '0');
+		i++;
 	}
 }
-void	ft_print_combn(int n)
+
+int	ft_check_for_next_comb(int *arr, int size)
 {
-	char arr[10];
 	int	i;
 
-	i = n;
-	while (i > 1)
+	i = size - 1;
+	if (arr[i] < 9)
+		return (i);
+	while (i > 0)
 	{
-		arr[i] = i + '0';
-		i--;
+		if (arr[i] == arr[i - 1] + 1)
+			i--;
+		else
+			break ;
 	}
-	arr[0] = 0;
-	
+	return (--i);
+}
+
+void	ft_next_comb(int *arr, int i_start, int size)
+{
+	arr[i_start]++;
+	i_start++;
+	while (i_start < size)
+	{
+		arr[i_start] = arr[i_start - 1] + 1;
+		i_start++;
+	}
+}
+
+void	ft_print_combn(int n)
+{
+	int	arr[10];
+	int	i;
+	int	index_start_comb;
+
+	i = 0;
+	while (i < n)
+	{
+		arr[i] = i;
+		i++;
+	}
+	while (1)
+	{
+		ft_putarray(arr, n);
+		index_start_comb = ft_check_for_next_comb(arr, n);
+		if (index_start_comb == -1)
+			break ;
+		else
+		{
+			ft_putchar(',');
+			ft_putchar(' ');
+		}
+		ft_next_comb(arr, index_start_comb, n);
+	}
 }
