@@ -1,16 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abahafid <abahafid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/25 08:57:35 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/26 08:33:32 by abahafid         ###   ########.fr       */
+/*   Created: 2021/09/26 08:59:06 by abahafid          #+#    #+#             */
+/*   Updated: 2021/09/26 09:06:09 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_ft(int *********nbr)
+#include <unistd.h>
+
+void	ft_putchar(char ch)
 {
-	*********nbr = 42;
+	write(1, &ch, 1);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		ft_putchar(str[i++]);
 }
