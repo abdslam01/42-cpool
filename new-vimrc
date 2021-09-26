@@ -1,0 +1,9 @@
+:set number
+syntax on
+:set expandtab!
+
+let mapleader = ' '
+nmap <leader>q :q<cr>
+nmap <leader>w :w<cr>
+nmap <leader>n :!clear && norminette -R CheckForbiddenSourceHeader % <cr>
+nmap <leader>c :!gcc -Wall -Werror -Wextra % -o %:r && ./%:r
