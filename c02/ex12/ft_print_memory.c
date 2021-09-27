@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 19:13:04 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/27 18:18:02 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/27 19:10:58 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void	ft_print_address(unsigned long add)
 	}
 }
 
-void	ft_print_data_hex(char *add)
+void	ft_print_data_hex(char *add, int remainder)
 {
 	int	left;
 	int	right;
 	int	i;
 
 	i = 0;
-	while (add[i] && i < 16)
+	while (i < remainder)
 	{
 		if (i % 2 == 0)
 			write(1, " ", 1);
@@ -54,16 +54,16 @@ void	ft_print_data_hex(char *add)
 		write(1, &left, 1);
 		write(1, &right, 1);
 	}
-	if (!*add)
+	if (!add[i])
 		write(1, "00", 2);
 }
 
-void	ft_print_data_ascii(char *add)
+void	ft_print_data_ascii(char *add, int remainder)
 {
 	int	i;
 
 	i = 0;
-	while (add[i] && i < 16)
+	while (i < remainder)
 	{
 		if (add[i] >= ' ' && add[i] <= '~')
 			write(1, add + i, 1);
@@ -71,7 +71,7 @@ void	ft_print_data_ascii(char *add)
 			write(1, ".", 1);
 		i++;
 	}
-	if (!*add)
+	if (!add[i])
 		write(1, ".", 1);
 }
 
@@ -79,16 +79,21 @@ void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int	i;
 	void			*return_addr;
+	int				remainder;
 
 	return_addr = addr;
 	i = 0;
 	while (i < size)
 	{
+		if (size - i > 16)
+			remainder = 16;
+		else
+			remainder = size - i;
 		ft_print_address((unsigned long) addr);
 		write(1, ":", 1);
-		ft_print_data_hex((char *) addr);
+		ft_print_data_hex((char *) addr, remainder);
 		write(1, " ", 1);
-		ft_print_data_ascii((char *) addr);
+		ft_print_data_ascii((char *) addr, remainder);
 		write(1, "\n", 1);
 		i += 16;
 		addr += 16;
@@ -98,7 +103,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 
 int	main(void)
 {
-	char *s = "";//Bonjour les aminches\n\n\nc est fo u";
-	ft_print_memory(s, 1);
+	char *s = "Bonjour les aminches\n\n\nc est fo u";
+	ft_print_memory(s, 35);
 	
 }
