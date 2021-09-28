@@ -6,19 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 08:58:21 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/28 09:11:04 by abahafid         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_print_memory.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/26 19:13:04 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/28 08:58:08 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/28 09:57:24 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +30,30 @@ void	ft_print_address(unsigned long add)
 	}
 }
 
-void	ft_print_data_hex(char *add, int remainder)
+void	ft_print_data_hex(char *add, int remainder, int hex)
 {
-	int	left;
-	int	right;
 	int	i;
+	int	j;
 
-	i = 0;
-	while (i < remainder)
+	i = -1;
+	while (++i < remainder)
 	{
 		if (i % 2 == 0)
 			write(1, " ", 1);
-		left = add[i] >> 4;
-		right = add[i++] & 0xf;
-		if (left > 9)
-			left += 'a' - 10;
-		else
-			left += '0';
-		if (right > 9)
-			right += 'a' - 10;
-		else
-			right += '0';
-		write(1, &left, 1);
-		write(1, &right, 1);
+		j = 2;
+		while (--j >= 0)
+		{
+			hex = add[i] >> (4 * j) & 0xf;
+			if (hex > 9)
+				hex += 'a' - 10;
+			else
+				hex += '0';
+			write(1, &hex, 1);
+		}
 	}
-	if (!add[i]){
-		if(i % 2 == 0)
+	if (!add[i])
+	{
+		if (i % 2 == 0)
 			write(1, " ", 1);
 		write(1, "00", 2);
 	}
@@ -95,7 +81,8 @@ unsigned int	ft_strlen(char *str)
 	unsigned int	i;
 
 	i = 0;
-	while (str[i++]);
+	while (str[i])
+		i++;
 	return (i);
 }
 
@@ -106,7 +93,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	int				remainder;
 
 	if (ft_strlen((char *) addr) < size)
-		size = ft_strlen((char *) addr) - 1;
+		size = ft_strlen((char *) addr);
 	return_addr = addr;
 	i = 0;
 	while (i < size)
@@ -117,7 +104,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 			remainder = size - i;
 		ft_print_address((unsigned long) addr);
 		write(1, ":", 1);
-		ft_print_data_hex((char *) addr, remainder);
+		ft_print_data_hex((char *) addr, remainder, 0);
 		write(1, " ", 1);
 		ft_print_data_ascii((char *) addr, remainder);
 		write(1, "\n", 1);
@@ -131,5 +118,5 @@ int	main(void)
 {
 	char *s = "Bonjour les aminches\n\n\nc est fo uii\n";
 	ft_print_memory(s, 123);
-	
+
 }
