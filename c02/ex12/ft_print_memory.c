@@ -5,8 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/28 08:58:21 by abahafid          #+#    #+#             */
+/*   Updated: 2021/09/28 09:11:04 by abahafid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_memory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 19:13:04 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/27 19:10:58 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/28 08:58:08 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +66,11 @@ void	ft_print_data_hex(char *add, int remainder)
 		write(1, &left, 1);
 		write(1, &right, 1);
 	}
-	if (!add[i])
+	if (!add[i]){
+		if(i % 2 == 0)
+			write(1, " ", 1);
 		write(1, "00", 2);
+	}
 }
 
 void	ft_print_data_ascii(char *add, int remainder)
@@ -75,12 +90,23 @@ void	ft_print_data_ascii(char *add, int remainder)
 		write(1, ".", 1);
 }
 
+unsigned int	ft_strlen(char *str)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (str[i++]);
+	return (i);
+}
+
 void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int	i;
 	void			*return_addr;
 	int				remainder;
 
+	if (ft_strlen((char *) addr) < size)
+		size = ft_strlen((char *) addr) - 1;
 	return_addr = addr;
 	i = 0;
 	while (i < size)
@@ -103,7 +129,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 
 int	main(void)
 {
-	char *s = "Bonjour les aminches\n\n\nc est fo u";
-	ft_print_memory(s, 35);
+	char *s = "Bonjour les aminches\n\n\nc est fo uii\n";
+	ft_print_memory(s, 123);
 	
 }
