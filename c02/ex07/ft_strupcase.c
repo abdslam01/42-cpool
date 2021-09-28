@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 13:13:55 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/26 13:18:53 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:55:39 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strupcase(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] > 'a' && str[i] < 'z')
+		if (str[i] >= 'a' && str[i] =< 'z')
 			str[i] = str[i] - ('a' - 'A');
 		i++;
 	}

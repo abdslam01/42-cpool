@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 13:20:14 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/26 13:21:37 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/28 10:56:19 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strlowercase(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] > 'A' && str[i] < 'Z')
+		if (str[i] >= 'A' && str[i] =< 'Z')
 			str[i] = str[i] + ('a' - 'A');
 		i++;
 	}
