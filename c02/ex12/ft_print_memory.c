@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 08:58:21 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/28 09:57:24 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/28 09:59:48 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,4 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		addr += 16;
 	}
 	return (return_addr);
-}
-
-int	main(void)
-{
-	char *s = "Bonjour les aminches\n\n\nc est fo uii\n";
-	ft_print_memory(s, 123);
-
 }

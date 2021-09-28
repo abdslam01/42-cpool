@@ -6,19 +6,21 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 13:20:14 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/28 10:56:19 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:46:06 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strlowercase(char *str)
 {
 	int	i;
+	int	is_upp;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] >= 'A' && str[i] =< 'Z')
-			str[i] = str[i] + ('a' - 'A');
+		is_upp = str[i] >= 'A' && str[i] <= 'Z';
+		if (is_upp)
+			str[i] += 32;
 		i++;
 	}
 	return (str);

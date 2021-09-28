@@ -6,19 +6,21 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 13:13:55 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/28 10:55:39 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/28 13:44:45 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strupcase(char *str)
 {
 	int	i;
+	int	is_low;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] >= 'a' && str[i] =< 'z')
-			str[i] = str[i] - ('a' - 'A');
+		is_low = str[i] >= 'a' && str[i] <= 'z';
+		if (is_low)
+			str[i] -= ('a' - 'A');
 		i++;
 	}
 	return (str);

@@ -6,18 +6,18 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 18:43:00 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/26 19:11:49 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/28 15:59:00 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_is_printable(char c)
+int	ft_is_printable(unsigned char c)
 {
 	return (c >= 32 && c <= 126);
 }
 
-void	ft_puthex(char c)
+void	ft_puthex(unsigned char c)
 {
 	int	left;
 	int	right;
@@ -39,15 +39,17 @@ void	ft_puthex(char c)
 
 void	ft_putstr_non_printable(char *str)
 {
-	int	i;
+	int				i;
+	unsigned char	ch;
 
 	i = 0;
 	while (str[i])
 	{
-		if (ft_is_printable(str[i]))
-			write(1, str + i, 1);
+		ch = (unsigned char) str[i];
+		if (ft_is_printable(ch))
+			write(1, &ch, 1);
 		else
-			ft_puthex(str[i]);
+			ft_puthex(ch);
 		i++;
 	}
 }

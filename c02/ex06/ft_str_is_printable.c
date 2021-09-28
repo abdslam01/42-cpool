@@ -6,11 +6,11 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 13:07:36 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/26 13:12:38 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/27 13:18:38 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int  ft_str_is_printable(char *str)
+int	ft_str_is_printable(char *str)
 {
 	int	i;
 
