@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 11:21:45 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/29 15:08:54 by abahafid         ###   ########.fr       */
+/*   Created: 2021/09/29 12:40:26 by abahafid          #+#    #+#             */
+/*   Updated: 2021/09/29 16:25:41 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strstr(char *str, char *to_find);
+
+int main(void)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (s1[i] - s2[i]);
+	char a[] = "hello Abdesslalam";
+	char find[] = "ttt";
+	printf("%s", ft_strstr(a, find));
 }

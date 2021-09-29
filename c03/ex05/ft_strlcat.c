@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 11:21:45 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/29 15:08:54 by abahafid         ###   ########.fr       */
+/*   Created: 2021/09/29 14:22:37 by abahafid          #+#    #+#             */
+/*   Updated: 2021/09/29 16:56:50 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+unsigned int	ft_strlen(char *s)
 {
 	int	i;
 
 	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+	while(s[i])
 		i++;
-	}
-	return (s1[i] - s2[i]);
+	return (i);
+}
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	if (size == 0)
+		return (ft_strlen(dest) + ft_strlen(src));
 }

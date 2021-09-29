@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 11:21:45 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/29 15:08:54 by abahafid         ###   ########.fr       */
+/*   Created: 2021/09/29 08:55:35 by abahafid          #+#    #+#             */
+/*   Updated: 2021/09/29 09:09:46 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
+#include <stdio.h>
 
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (s1[i] - s2[i]);
+char	*ft_strncat(char *dest, char *src, unsigned int nb);
+
+int main(void)
+{
+	char d[50] = "hello ";
+	printf("%s\n", ft_strncat(d, "world, how are you!", 5));
 }

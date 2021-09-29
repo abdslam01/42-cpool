@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 11:21:45 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/29 15:08:54 by abahafid         ###   ########.fr       */
+/*   Created: 2021/09/29 10:27:42 by abahafid          #+#    #+#             */
+/*   Updated: 2021/09/29 10:32:16 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
 
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (s1[i] - s2[i]);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+#include <stdio.h>
+int main(void)
+{
+	char a[20] = "abc";
+	ft_strlcpy(a, "xyzzz", 6);
+	printf("%s", a);
 }
