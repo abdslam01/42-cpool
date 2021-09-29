@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 16:50:56 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/28 19:22:42 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/29 10:04:24 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 
 	i = 0;
 	len = ft_strlen(src);
-	if(size == 0)
+	if (size == 0)
 		return (len);
 	while (i < size - 1 && src[i])
 	{
