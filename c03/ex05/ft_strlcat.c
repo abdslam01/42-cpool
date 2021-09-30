@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 14:22:37 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/29 16:56:50 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/09/30 10:09:39 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,28 @@ unsigned int	ft_strlen(char *s)
 	return (i);
 }
 
+unsigned int	min(int a, int b)
+{
+	if(a < b)
+		return (a);
+	return (b);
+}
+
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	if (size == 0)
-		return (ft_strlen(dest) + ft_strlen(src));
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	len_s;
+	unsigned int	len_d;
+
+	len_s = ft_strlen(src);
+	len_d  = ft_strlen(dest);
+	if(!size)
+		return (len_s);
+	i = len_d;
+	j = 0;
+	while (i < size - 1)
+		dest[i++] = src[j++];
+	dest[i] = 0;
+	return (len_s + min(len_d, size));
 }
