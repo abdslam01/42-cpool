@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 09:12:37 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/29 14:43:06 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/02 08:21:04 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strstr(char *str, char *to_find)
 	int	j;
 
 	i = 0;
+	if (!to_find[0])
+		return (str);
 	while (str[i])
 	{
 		j = 0;
