@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 09:44:54 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/01 09:49:15 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/02 08:54:11 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ int	ft_is_prime(int nb)
 {
 	int	i;
 
+	if (nb < 2)
+		return (0);
 	i = 2;
 	while (i < nb)
 	{
@@ -26,10 +28,11 @@ int	ft_is_prime(int nb)
 
 int	ft_find_next_prime(int nb)
 {
-	while (1)
+	while (nb < 2147483647)
 	{
 		if (ft_is_prime(nb))
 			return (nb);
 		nb++;
 	}
+	return (-1);
 }

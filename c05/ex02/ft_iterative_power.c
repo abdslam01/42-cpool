@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 19:06:37 by abahafid          #+#    #+#             */
-/*   Updated: 2021/09/30 19:08:25 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/02 08:39:49 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ int	ft_iterative_power(int nb, int power)
 		to_return *= nb;
 		power--;
 	}
+	return (to_return);
 }
