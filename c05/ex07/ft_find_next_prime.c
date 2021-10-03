@@ -6,9 +6,25 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 09:44:54 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/03 14:50:34 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/03 18:25:28 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// Babylonian method
+int	ft_sqrt(int nb)
+{
+	int	est;
+	int	n_est;
+
+	est = nb >> 1;
+	n_est = (est + nb / est) >> 1;
+	while (n_est < est)
+	{
+		est = n_est;
+		n_est = (est + nb / est) >> 1;
+	}
+	return (est);
+}
 
 int	ft_is_prime(int nb)
 {
@@ -17,7 +33,7 @@ int	ft_is_prime(int nb)
 	if (nb < 2)
 		return (0);
 	i = 2;
-	while (i < nb)
+	while (i <= ft_sqrt(nb))
 	{
 		if (nb % i == 0)
 			return (0);
@@ -28,13 +44,9 @@ int	ft_is_prime(int nb)
 
 int	ft_find_next_prime(int nb)
 {
-	if (nb < 0)
+	if (nb < 2)
 		return (2);
-	while (nb <= 2147483647)
-	{
-		if (ft_is_prime(nb))
-			return (nb);
+	while (!ft_is_prime(nb))
 		nb++;
-	}
-	return (-1);
+	return (nb);
 }
