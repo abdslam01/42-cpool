@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 15:51:29 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/02 19:15:28 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/03 11:18:55 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,15 @@ void	ft_putnbr_base(int nbr, char *base)
 	b_size = ft_strlen(base);
 	if (b_size < 2 || !ft_check_unique_and_signs(base, b_size))
 		return ;
-	if(nbr < 0)
+	if (nbr < 0)
 	{
 		write(1, "-", 1);
+		if (nbr == 1 << (sizeof(int) * 8 - 1))
+		{
+			ft_putnbr_base(nbr / b_size * -1, base);
+			ft_putnbr_base(nbr % b_size * -1, base);
+			return ;
+		}
 		nbr *= -1;
 	}
 	if (nbr < b_size)

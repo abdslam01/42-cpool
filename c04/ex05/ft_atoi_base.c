@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 16:25:57 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/01 09:38:52 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/03 09:40:05 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	ft_check_unique_and_signs(char *str, int size)
 		j = i + 1;
 		while (j < size)
 		{
-			if (str[i] == '-' || str[i] == '+' || str[i] == str[j])
+			if (str[i] == '-' || str[i] == '+' || str[i] == str[j]
+				|| ft_is_space(str[i]))
 				return (0);
 			j++;
 		}
