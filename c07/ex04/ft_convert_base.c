@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:37:01 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/04 19:36:05 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:42:18 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_atoi_base(char *str, char *base, int b_size)
 		to_return = to_return * b_size + ft_find_in_base(str[i++], base);
 	return (to_return * is_negative);
 }
-#include <stdio.h>
+
 char	*ft_convert_to_base(int nbr, char *base, int b_size)
 {
 	int		nbr_size;
@@ -81,7 +81,7 @@ char	*ft_convert_to_base(int nbr, char *base, int b_size)
 	int		is_neg;
 
 	is_neg = nbr < 0;
-	nbr_size = is_neg  + 1;
+	nbr_size = is_neg + 1;
 	nbr_tmp = nbr;
 	while (nbr_tmp)
 	{
@@ -90,10 +90,9 @@ char	*ft_convert_to_base(int nbr, char *base, int b_size)
 	}
 	to_return = (char *) malloc(nbr_size * sizeof(int));
 	to_return[--nbr_size] = 0;
-	if (is_neg){
-		to_return[0] = '-';
+	to_return[0] = '-';
+	if (is_neg)
 		nbr *= -1;
-	}
 	while (nbr_size-- > is_neg)
 	{
 		to_return[nbr_size] = base[nbr % b_size];
