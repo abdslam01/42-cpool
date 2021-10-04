@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 18:25:36 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/02 19:02:26 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/03 16:03:54 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	i = 0;
 	s_len = 0;
 	while (i < size)
-		s_len += ft_strlen(str[i++]);
+		s_len += ft_strlen(strs[i++]);
 	s_len += ((size - 1) * ft_strlen(sep) + 1);
 	f_str = (char *) malloc(s_len * sizeof(char));
 	i = -1;
