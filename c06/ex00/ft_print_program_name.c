@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 16:02:35 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/02 16:06:22 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/03 19:37:43 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	char *str;
+	char	*str;
 
 	argc = 1;
 	str = argv[0];
