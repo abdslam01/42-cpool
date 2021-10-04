@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 15:51:29 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/03 11:18:55 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/04 11:17:50 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,30 @@ int	ft_check_unique_and_signs(char *str, int size)
 	i = 0;
 	while (i < size - 1)
 	{
+		if (str[i] == '-' || str[i] == '+')
+			return (0);
 		j = i + 1;
 		while (j < size)
 		{
-			if (str[i] == '-' || str[i] == '+' || str[i] == str[j])
+			if (str[i] == str[j])
 				return (0);
 			j++;
 		}
 		i++;
 	}
 	return (1);
+}
+
+void _ft_putnbr_base(int nbr, char *base, int b_size)
+{
+	if (nbr < b_size)
+		write(1, base + nbr, 1);
+	else
+	{
+		_ft_putnbr_base(nbr / b_size, base, b_size);
+		_ft_putnbr_base(nbr % b_size, base, b_size);
+	}
+
 }
 
 void	ft_putnbr_base(int nbr, char *base)
@@ -52,19 +66,13 @@ void	ft_putnbr_base(int nbr, char *base)
 	if (nbr < 0)
 	{
 		write(1, "-", 1);
-		if (nbr == 1 << (sizeof(int) * 8 - 1))
+		if (nbr == (1 << (sizeof(int) * 8 - 1)))
 		{
-			ft_putnbr_base(nbr / b_size * -1, base);
-			ft_putnbr_base(nbr % b_size * -1, base);
+			_ft_putnbr_base(nbr / b_size * -1, base, b_size);
+			_ft_putnbr_base(nbr % b_size * -1, base, b_size);
 			return ;
 		}
 		nbr *= -1;
 	}
-	if (nbr < b_size)
-		write(1, base + nbr, 1);
-	else
-	{
-		ft_putnbr_base(nbr / b_size, base);
-		ft_putnbr_base(nbr % b_size, base);
-	}
+	_ft_putnbr_base(nbr, base, b_size);
 }
