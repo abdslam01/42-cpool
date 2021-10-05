@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 15:51:29 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/04 11:17:50 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:55:09 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_check_unique_and_signs(char *str, int size)
 	int	j;
 
 	i = 0;
-	while (i < size - 1)
+	while (i < size)
 	{
 		if (str[i] == '-' || str[i] == '+')
 			return (0);
