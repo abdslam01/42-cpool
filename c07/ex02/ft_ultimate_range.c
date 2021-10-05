@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 17:52:40 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/04 14:45:22 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:07:44 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 		return (0);
 	}
 	*range = (int *) malloc((max - min) * sizeof(int));
-	if(!*range)
+	if (!*range)
 		return (-1);
 	i = 0;
 	while (min < max)

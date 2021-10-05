@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 17:25:12 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/02 17:43:28 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:07:12 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ int	ft_strlen(char *str)
 
 char	*ft_strdup(char *src)
 {
-	char *dest;
-	int i;
+	char	*dest;
+	int		i;
 
 	dest = (char *) malloc((ft_strlen(src) + 1) * sizeof(char));
-
-	if(dest == 0)
+	if (dest == 0)
 		return (0);
 	i = -1;
 	while (src[++i])
