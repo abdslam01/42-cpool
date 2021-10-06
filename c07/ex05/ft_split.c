@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 08:51:51 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/05 11:40:40 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/06 13:37:20 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,11 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 	int		k;
 	int		s_len;
+	int		nb_words;
 
-	strs = (char **) malloc((words_counter(str, charset) + 1) * sizeof(char *));
+	nb_words = words_counter(str, charset);
+	strs = (char **) malloc((nb_words + 1) * sizeof(char *));
+	strs[nb_words] = 0;
 	if (!strs)
 		return (0);
 	i = 0;
@@ -82,14 +85,11 @@ char	**ft_split(char *str, char *charset)
 		s_len = ft_strlen(str + i, charset);
 		if (s_len)
 		{
-			set_word_strs(strs, str + i, s_len, k);
-			k++;
+			set_word_strs(strs, str + i, s_len, k++);
 			i += s_len;
 		}
 		else
 			i++;
 	}
-	strs[k] = (char *) malloc(sizeof(char));
-	strs[k][0] = 0;
 	return (strs);
 }

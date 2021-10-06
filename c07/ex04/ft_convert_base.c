@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:37:01 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/05 18:36:37 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:53:40 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ char	*ft_convert_to_base(int nbr, char *base, int b_size)
 	int		is_neg;
 
 	is_neg = nbr < 0;
-	nbr_size = is_neg + 1;
+	nbr_size = is_neg + (nbr == 0) + 1;
 	nbr_tmp = nbr;
 	while (nbr_tmp)
 	{
 		nbr_tmp /= b_size;
 		nbr_size++;
 	}
-	to_return = (char *) malloc(nbr_size * sizeof(int));
+	to_return = (char *) malloc(nbr_size * sizeof(char));
 	to_return[--nbr_size] = 0;
 	to_return[0] = '-';
 	nbr_tmp = 1;
