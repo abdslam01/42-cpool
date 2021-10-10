@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 10:10:55 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/10 11:06:41 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/10 16:48:38 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ void	write_files_to_stdout(int size, char **files)
 	while (++i < size)
 	{
 		fd = open(files[i], O_RDWR);
-		if (write_file_name)
-			ft_print_file_name(files[i]);
 		if (errno)
 		{
-			if (write_file_name)
+			if (errno != EISDIR)
 				ft_print_error(files[i], strerror(errno));
 			errno = 0;
 			continue ;
 		}
+		if (write_file_name)
+			ft_print_file_name(files[i]);
 		while (read(fd, &c, 1))
 			write(1, &c, 1);
 		if (i < size - 1)

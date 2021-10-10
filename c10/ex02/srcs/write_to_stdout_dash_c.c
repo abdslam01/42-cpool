@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tail.c                                          :+:      :+:    :+:   */
+/*   write_to_stdout_dash_c.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/10 09:43:06 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/10 18:00:10 by abahafid         ###   ########.fr       */
+/*   Created: 2021/10/10 17:28:03 by abahafid          #+#    #+#             */
+/*   Updated: 2021/10/10 18:34:08 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_tail.h"
 
-int	main(int argc, char **argv)
+void	write_to_stdout_dash_c(int size, char **args)
 {
-	if (argc > 1)
+	int	buffer;
+
+	buffer = FT_NO_ARG;
+	if (size > 2)
+		buffer = ft_atoi_c(args[2]);
+	if (buffer == FT_NO_ARG)
 	{
-		if (!ft_strcmp(argv[1], "-c"))
-			write_to_stdout_dash_c(argc, argv);
-		else
-			write_files_to_stdout(argc - 1, argv + 1);
+		ft_putstr("ft_tail: option requires an argument -- c\n");
+		ft_putstr("usage: ft_tail [-c #] [file ...]\n");
+	}
+	else if (buffer == FT_IL_ARG)
+	{
+		ft_putstr("ft_tail: illegal offset --");
+		ft_putstr(args[2]);
+		ft_putstr("\n");
 	}
 	else
-		write_stdin_to_stdout();
+		ft_putstr("all right!\n");
 }
