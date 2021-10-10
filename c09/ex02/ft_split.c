@@ -6,81 +6,90 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 11:55:27 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/07 13:49:14 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/10 08:51:11 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
-int	is_in_charset(char c, char *charset)
+int	ft_is_in(char c, char *str)
 {
 	int	i;
 
 	i = -1;
-	while (charset[++i])
-		if (c == charset[i])
+	while (str[++i])
+		if (c == str[i])
 			return (1);
 	return (0);
 }
 
-int	strlen_charset(char *str, char *charset)
+int	ft_strlen(char *str, char *charset)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] && !is_in_charset(str[i], charset))
+	while (str[i] && !ft_is_in(str[i], charset))
 		i++;
 	return (i);
 }
 
 int	words_counter(char *str, char *charset)
 {
-	int	w_counter;
-	int	i;
+	int		i;
+	int		w_counter;
+	char	is_charset;
 
-	w_counter = 0;
 	i = 0;
-	if (str[i] && !is_in_charset(str[i], charset))
+	w_counter = 0;
+	if (str[i] && !ft_is_in(str[i++], charset))
 		w_counter++;
-	while (str[++i])
-		if (is_in_charset(str[i - 1], charset)
-			&& !is_in_charset(str[i], charset))
+	i++;
+	while (str[i])
+	{
+		is_charset = ft_is_in(str[i - 1], charset);
+		if (is_charset && !ft_is_in(str[i], charset))
 			w_counter++;
+		i++;
+	}
 	return (w_counter);
+}
+
+void	set_word_strs(char **strs, char *str, int s_len, int k)
+{
+	int	j;
+
+	strs[k] = (char *) malloc((s_len + 1) * sizeof(char));
+	j = -1;
+	while (++j < s_len)
+		strs[k][j] = *(str + j);
+	strs[k][j] = 0;
 }
 
 char	**ft_split(char *str, char *charset)
 {
 	char	**strs;
-	int		w_counter;
 	int		i;
-	int		j;
-	int		c_str_len;
+	int		k;
+	int		s_len;
+	int		nb_words;
 
-	w_counter = words_counter(str, charset);
-	strs = (char **) malloc((w_counter + 1) * sizeof(char *));
+	nb_words = words_counter(str, charset);
+	strs = (char **) malloc((nb_words + 1) * sizeof(char *));
 	if (!strs)
 		return (0);
-	strs[w_counter] = 0;
+	strs[nb_words] = 0;
 	i = 0;
-	while (i < w_counter)
+	k = 0;
+	while (str[i])
 	{
-		c_str_len = strlen_charset(str, charset);
-		strs[i] = (char *) malloc((c_str_len + 1) * sizeof(char));
-		if (!strs[i])
-			return (strs);
-		if (c_str_len)
+		s_len = ft_strlen(str + i, charset);
+		if (s_len)
 		{
-			j = -1;
-			while (++j < c_str_len)
-				strs[i][j] = str[j];
-			strs[i][j] = 0;
-			str += c_str_len;
-			i++;
+			set_word_strs(strs, str + i, s_len, k++);
+			i += s_len;
 		}
 		else
-			str++;
+			i++;
 	}
 	return (strs);
 }
