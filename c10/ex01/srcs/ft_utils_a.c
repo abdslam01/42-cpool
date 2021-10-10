@@ -6,11 +6,11 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:01:52 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/09 15:03:25 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/10 09:04:58 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_cat.h"
+#include "ft_cat.h"
 
 void	ft_putstr(char *str)
 {
