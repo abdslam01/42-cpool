@@ -6,7 +6,7 @@
 #    By: abahafid <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/07 09:55:18 by abahafid          #+#    #+#              #
-#    Updated: 2021/10/07 17:32:13 by abahafid         ###   ########.fr        #
+#    Updated: 2021/10/11 19:03:25 by abahafid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
 
 %.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@ -I./includes/
 
 clean:
 	rm -rf $(OBJECTS)
