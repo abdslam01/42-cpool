@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_b.c                                       :+:      :+:    :+:   */
+/*   ft_write_stdin_to_stdout.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 10:39:26 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/12 16:26:39 by abahafid         ###   ########.fr       */
+/*   Created: 2021/10/12 13:56:12 by abahafid          #+#    #+#             */
+/*   Updated: 2021/10/12 19:20:51 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_tail.h"
 
-void	ft_putfilename(char *filename)
+void	ft_write_stdin_to_stdout(int count)
 {
-	ft_putstr(1, "==> ");
-	ft_putstr(1, filename);
-	ft_putstr(1, " <==\n");
-}
+	char	*buf;
+	int		i;
+	int		j;
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (src[i] && i < n)
+	j = 0;
+	buf = (char *) malloc(2 * count * sizeof(char));
+	while (1)
 	{
-		dest[i] = src[i];
-		i++;
+		i = read(0, buf + count, count);
+		ft_strncpy(buf, buf + count, count);
+		j += i;
+		if (!i)
+			break ;
 	}
-	while (i < n)
-		dest[i++] = 0;
-	return (dest);
+	if (count < j)
+		write(1, buf + (j % count), count);
+	else
+		write(1, buf, j);
+	free(buf);
 }

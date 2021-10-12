@@ -6,20 +6,20 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 09:04:23 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/12 11:41:59 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/12 16:59:21 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_tail.h"
 
-void	ft_putstr(char *str)
+void	ft_putstr(int s_out, char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 		i++;
-	write(1, str, i);
+	write(s_out, str, i);
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -53,22 +53,26 @@ void	ft_puterror_arg(int err_no, char *arg_name)
 {
 	if (err_no == FT_NO_ARG)
 	{
-		ft_putstr("tail: option requires an argument -- c\n");
-		ft_putstr("usage: ft_tail [-c #] [file ...]\n");
+		ft_putstr(2, "tail: option requires an argument -- c\n");
+		ft_putstr(2, "usage: ft_tail [-c #] [file ...]\n");
 	}
 	else if (err_no == FT_IL_ARG)
 	{
-		ft_putstr("tail: illegal offset -- ");
-		ft_putstr(arg_name);
-		ft_putstr("\n");
+		ft_putstr(2, "tail: illegal offset -- ");
+		ft_putstr(2, arg_name);
+		ft_putstr(2, "\n");
 	}
 }
 
 void	ft_puterror(char *file_name, char *err_str)
 {
-	ft_putstr("tail: ");
-	ft_putstr(file_name);
-	ft_putstr(": ");
-	ft_putstr(err_str);
-	ft_putstr("\n");
+	if (errno != EISDIR)
+	{
+		ft_putstr(2, "tail: ");
+		ft_putstr(2, file_name);
+		ft_putstr(2, ": ");
+		ft_putstr(2, err_str);
+		ft_putstr(2, "\n");
+	}
+	errno = 0;
 }
