@@ -1,35 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_do_op.c                                         :+:      :+:    :+:   */
+/*   ft_put.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 20:08:12 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/13 12:19:26 by abahafid         ###   ########.fr       */
+/*   Created: 2021/10/13 10:09:58 by abahafid          #+#    #+#             */
+/*   Updated: 2021/10/13 10:14:26 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_do_op.h"
 
-int	main(int argc, char **argv)
+void	ft_putchar(char c)
 {
-	int		n1;
-	int		n2;
-	void	(*opers[5]) (int, int);
-	int		oper_pos;
+	write(1, &c, 1);
+}
 
-	if (argc < 4)
-		return (1);
-	set_oprations(opers);
-	oper_pos = find_op(argv[2][0], "+-*/%");
-	n1 = ft_atoi(argv[1]);
-	n2 = ft_atoi(argv[3]);
-	if (oper_pos >= 0 && oper_pos <= 4)
+void	ft_putnbr(int nb)
+{
+	if (nb < 0)
 	{
-		calculate(n1, n2, (*opers[oper_pos]));
-		ft_putstr("\n");
+		if (nb == -2147483648)
+		{
+			write(1, "-2147483648", 11);
+			return ;
+		}
+		nb *= -1;
+		ft_putchar('-');
 	}
+	if (nb < 10)
+		ft_putchar(nb + '0');
 	else
-		write(1, "0\n", 2);
+	{		
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	write(1, str, i);
 }
