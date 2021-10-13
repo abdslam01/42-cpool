@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 20:00:36 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/13 15:25:09 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:11:01 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_count_if(char **tab, int length, int (*f)(char*))
 
 	i = -1;
 	count = 0;
-	while (tab[++i])
+	while (++i < length)
 		if ((*f)(tab[i]) != 0)
 			count++;
 	return (count);
