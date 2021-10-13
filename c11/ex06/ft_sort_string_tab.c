@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 12:27:10 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/13 13:00:38 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:02:49 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_sort_string_tab(char **tab)
 		j = i + 1;
 		while (tab[j])
 		{
-			if (ft_strcmp(tab[i], tab[i]) > 0)
+			if (ft_strcmp(tab[i], tab[j]) > 0)
 			{
 				tmp = tab[i];
 				tab[i] = tab[j];
