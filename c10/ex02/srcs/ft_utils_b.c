@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 10:39:26 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/12 16:26:39 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:52:14 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	unsigned int	i;
 
 	i = 0;
-	while (src[i] && i < n)
+	while (i < n)
 	{
 		dest[i] = src[i];
 		i++;
@@ -33,3 +33,4 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[i++] = 0;
 	return (dest);
 }
+// while (i < n) instead of while (src[i] && i < n) to support binary searching
