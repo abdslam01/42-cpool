@@ -6,7 +6,7 @@
 /*   By: abahafid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 20:08:12 by abahafid          #+#    #+#             */
-/*   Updated: 2021/10/14 12:14:57 by abahafid         ###   ########.fr       */
+/*   Updated: 2021/10/14 13:53:02 by abahafid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	void	(*opers[5])(int, int);
 	int		oper_pos;
 
-	if (argc < 4)
+	if (argc != 4)
 		return (1);
 	set_oprations(opers);
 	oper_pos = find_op(argv[2][0], "+-*/%");
@@ -30,8 +30,6 @@ int	main(int argc, char **argv)
 		calculate(n1, n2, (*opers[oper_pos]));
 		ft_putstr("\n");
 	}
-	else if (oper_pos == -1)
-		return (1);
 	else
 		write(1, "0\n", 2);
 }
