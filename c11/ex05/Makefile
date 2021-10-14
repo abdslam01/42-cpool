@@ -6,7 +6,7 @@
 #    By: abahafid <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 20:18:00 by abahafid          #+#    #+#              #
-#    Updated: 2021/10/13 10:16:09 by abahafid         ###   ########.fr        #
+#    Updated: 2021/10/14 12:13:39 by abahafid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FLAGS	= -Wall -Wextra -Werror -I includes
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADER)
+$(NAME): $(OBJS) $(HEADER) $(MAIN)
 	$(CC) $(FLAGS) $(OBJS) $(MAIN) -o $(NAME)
 
 %.o: %.c
