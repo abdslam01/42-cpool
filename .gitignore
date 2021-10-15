@@ -1,0 +1,8 @@
+# ignore all, except derectories and files with no extension
+*
+!*/
+!*.*
+# unignore Makefile
+!Makefile
+#ignore swp files
+*/*.swp
